@@ -121,4 +121,4 @@ echo
 toilet -f future " Wellcome to my tools" | lolcat
 sleep 5
 clear
-sh shell
+sh Teenz Mux
