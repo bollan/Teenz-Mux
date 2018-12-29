@@ -1,0 +1,86 @@
+<title>Checker Shells </title>
+<style>
+body {
+    font-family: Verdana, monospace, sans-serif;
+    font-size: 12px;
+ 
+    text-align: justify;
+    min-height: 800px;
+}
+.veriler {
+    width: 300px;
+    padding: 20px;
+ 
+    position: relative;
+    margin: auto;
+}
+</style>
+ 
+<div class="veriler">
+<form action="" method="POST">
+ 
+<textarea style="width: 300px; height: 174px;" name="shell" rows="10" cols="40"></textarea>
+<input type="submit" name="ok" style="width:300px;" value="checker">
+ 
+</form>
+ 
+ 
+<?php
+ 
+# Coded By RxR HaCkEr <3
+ 
+ 
+function checkers()
+{
+ 
+if(isset($_POST['ok']))
+{
+    $name = $_POST['shell'];
+ 
+ 
+    echo  '<h5><font color="greey"> check : Work.txt</font></h5><h5> <font color="red">check : 404.txt </font></h5>';
+ 
+    $list=explode("\r\n", $name);
+ 
+    foreach ($list as $url)
+    {
+        if(stristr($url, 'http://'))
+            {
+ 
+                $ch=file_get_contents($url);
+ 
+                if(stristr($ch, 'Uname:'))
+                {
+                    file_put_contents("work.txt", $url."\r\n" , FILE_APPEND);
+                    echo '<h5> <font color="greey"> '.$url.'</font></h5>';
+ 
+                }
+                else
+                {
+ 
+                    file_put_contents("404.txt", $url."\r\n" , FILE_APPEND);
+                    echo '<h5><font color="red">'.$url.'</font></h5>';
+ 
+ 
+ 
+ 
+                }
+            }
+       
+            else
+            {
+ 
+                echo "add http:// on your list , ";
+            }
+ 
+    }
+}
+ 
+   
+}
+ 
+checkers();
+ 
+ 
+ 
+?>
